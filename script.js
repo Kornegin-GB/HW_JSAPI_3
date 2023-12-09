@@ -1,10 +1,12 @@
+import { acessKey } from './acessKey.js';
+
 const photoGalleryTable = document.querySelector('.photo-gallery__list');
 const quantity = document.querySelector('#quantity');
 
 let number = 1;
 
-//Для загрузки фотографий необходимо ввести сгенерированный acess key
-const acessKey = "Введите вашь acess key";
+// Для загрузки фотографий необходимо ввести сгенерированный acess key
+const acessKeyIm = acessKey;
 
 quantity.addEventListener("change", () => {
    loadMorePhotos(quantity.value);
@@ -12,7 +14,7 @@ quantity.addEventListener("change", () => {
 
 async function fetchPhotos (numberPage, quantity) {
    try {
-      const response = await fetch(`https://api.unsplash.com/photos?page=${numberPage}&per_page=${quantity}&client_id=${acessKey}&lang=ru`);
+      const response = await fetch(`https://api.unsplash.com/photos?page=${numberPage}&per_page=${quantity}&client_id=${acessKeyIm}&lang=ru`);
       const photos = await response.json();
       return photos;
    } catch (error) {
